@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+
+{% block body %}
+<div class="m-4">
+
+                 
+    <div class="container">
+        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-">
+            {% for dish in dishes %}   
+            <div class="col">  
+                <div class="p-3 border bg-light">
+                    <p>{{ dish.name }}</p>
+                    <a href="car_models.php?brand_id={{ dish.name }}" role="button">{{ dish.name }}
+                        <img src="/images/{{dish.photo}}"class="img-fluid">
+                    </a>
+                    <p>Price {{ dish.price }} Rub</p>
+                </div>    
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+</div>
+
+
+{% endblock %}
