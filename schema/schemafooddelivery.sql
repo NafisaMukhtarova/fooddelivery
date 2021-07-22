@@ -123,7 +123,9 @@ CREATE TABLE fdorderlist(
     price DECIMAL (10,2),
     quantity SMALLINT,
     cost  DECIMAL (10,2),
+    ordernumber INT NOT NULL,
 
     PRIMARY KEY(id),
-    FOREIGN KEY(dish) REFERENCES fddishes(id)
+    FOREIGN KEY(dish) REFERENCES fddishes(id),
+    FOREIGN KEY(ordernumber) REFERENCES fdorders(id)
 );

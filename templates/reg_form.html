@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+
+{% block body %}
+
+<div class="row">
+
+    <div class="col">
+
+
+<form action="registration.php" method="POST">
+
+    <input type="text" class="form-control" name = "login"
+    id = "login" placeholder="Введите логин" required>
+    <br>
+
+    <input type="password" class="form-control" name = "pass"
+    id = "pass" placeholder="Введите пароль" required>
+    <br>
+
+    <input type="text" class="form-control" name = "name"
+    id = "name" placeholder="Введите имя" required>
+    <br>
+
+    <input type="text" class="form-control" name = "address"
+    id = "address" placeholder="Введите адрес">
+    <br>
+    
+    <input type="text" class="mask-phone form-control" name = "phone-number"
+    id = "phone-number" placeholder="Введите номер телефона для связи" required>
+    <br>
+
+    <script>
+      $('.mask-phone').mask('+7 (999) 999-99-99');
+      </script>
+
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+  </form>
+
+</div>
+</div>
+
+{% endblock %}

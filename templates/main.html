@@ -17,6 +17,8 @@
 
     <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://snipp.ru/cdn/maskedinput/jquery.maskedinput.min.js"></script>
+
+    <link rel="stylesheet" href="https://snipp.ru/cdn/bootstrap/3.4.1/bootstrap.min.css">
     
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-warning">
@@ -25,7 +27,8 @@
 
        
             <div class="container">
-                <h1 class="text-center bg-warning">{{ title}}</h1> 
+                <h1 class="text-center bg-warning">{{ title }}</h1> 
+                
                 {% block body %}
                 {% endblock %}
             </div>

@@ -4,6 +4,13 @@ require_once ("../vendor/autoload.php");
 
 $appdir = dirname(__DIR__);
 
+//LOGGER
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+$log = new Logger('Fooddelivery');
+$log->pushHandler(new StreamHandler($appdir.'/logs/debug/log', Logger::DEBUG));
+
 //ENV
 $dotenv = Dotenv\Dotenv::createImmutable($appdir);
 $dotenv->load();

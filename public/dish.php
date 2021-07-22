@@ -1,4 +1,5 @@
 <?php
+// карточка блюда
 
 require_once ("bootstrap.php");
 
@@ -6,38 +7,35 @@ session_start();
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-//Загрузка данных - список блюд
-//$dishes = Capsule::table('fddishes')->get();
-/* ПРОБА не прошло
-$dishes = Capsule::table('fddishes')
-                    ->join('fdprices',function($join){
-                    join->on('fddishes.id','=','fdprices.dish')
-                        ->where('fdprices.active','=',true);
-                    })
-                    ->get();
-*/
-$dishes = Capsule::select('select D.dishname AS dishname,
-                                     D.id AS dishid, 
+$id = $_GET['id'];
+
+$dish = Capsule::select('select D.dishname AS dishname,
+                                    D.id AS dishid, 
                                     D.dishphoto AS dishphoto, 
+                                    D.dishdescription AS dishdescription,
+                                    D.dishingredients AS dishingredients,
                                     P.price AS price 
                                         from fddishes D, fdprices P 
-                                        where D.id = P.dish and P.active = true');
-//var_dump($dishes);
+                                        where D.id = P.dish and P.active = true and D.id =?',[$id]);
 
-$model_dishes =[];
-foreach ($dishes as $dish)
+//var_dump($dish);
+
+$model_dish =[];
+foreach ($dish as $dish)
 {
-    $model_dishes[] = [
+    $model_dish[] = [
         'id'=> $dish->dishid,
         'name'=> $dish->dishname,
         'photo'=>$dish->dishphoto,
-        'price'=>$dish->price
+        'price'=>$dish->price,
+        'description'=>$dish->dishdescription,
+        'ingredients'=>$dish->dishingredients
     ];
 }
+//var_dump($model_dishes);
 
-$model = ['title'=>'Food delivery','dishes'=>$model_dishes];
-//var_dump($model);
-//var_dump($_SESSION);
+$model = ['title'=>$model_dish[0]['name'],'dish'=>$model_dish];
+
 //  Авторизация клиента
 if (isset($_SESSION['user_id'])) {
     
@@ -51,6 +49,6 @@ if (isset($_SESSION['user_id'])) {
 }
 //var_dump($model);
 
-$template = $twig->load('index.html');
+$template = $twig->load('dish.html');
 
 echo $template->render($model);

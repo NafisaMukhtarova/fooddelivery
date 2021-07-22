@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+
+{% block body %}
+
+<div class="row">
+
+    <div class="col">
+  
+        <form action="authentication.php" method="POST">
+            <input type="text" class="form-control" name = "login"
+            id = "login" placeholder="Введите логин" required>
+            <br>
+            
+            <input type="password" class="form-control" name = "pass"
+            id = "pass" placeholder="Введите пароль" required>
+            <br>
+
+            <button type="submit" class="btn btn-primary">Авторизоваться</button>
+          </form>
+    </div>
+</div>
+<p>Незарегистрированы? Перейдите в <a href= "registration.php">форму регистрации</a></p>
+{% endblock %}

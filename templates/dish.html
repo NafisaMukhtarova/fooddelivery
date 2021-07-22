@@ -1,0 +1,49 @@
+{% extends "indexpages.html" %}
+
+{% block page %}
+
+<div class="m-4">
+    <div class="container">
+
+        {% for dish in dish %} 
+        <form action="cart.php" method="GET">  
+        <div class="row">
+            <div class="col-4">  
+                <img src="/images/{{dish.photo}}"class="img-fluid">
+            </div>
+                <div class="col-8">          
+                
+                            <div class="mb-3">
+                            <input type = 'hidden' name = 'id' value = '{{dish.id}}'>
+                            </div>
+
+                            <div class="input-group mb-3">
+                            <label for="description" class="form-label">Description</label>   
+                            <input type = "text" class="form-control"  value = "{{dish.description}}">
+                            </div>
+
+                            <div class="input-group mb-3">
+                            <label for="ingredients" class="form-label">Ingredients</label> 
+                            <input type = "text" class="form-control"  value = "{{dish.ingredients}}">
+                            </div>
+
+                            <div class="input-group  mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <input type = "text" class="form-control" name = "price" value = "{{dish.price}}"">
+                            </div>
+
+                            <div class="input-group mb-3">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type = "text" name = "quantity" value = "1">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Купить</button>       
+              </div>
+        </div>
+        </form>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
