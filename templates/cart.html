@@ -1,0 +1,37 @@
+{% extends "indexpages.html" %}
+
+{% block page %}
+
+{% for order in order%}
+    <p> Order № {{order.orderid}}</p>
+    <p> Date {{order.orderdate}} </p>
+    <p> Total cost {{order.totalcost}} </p>
+{% endfor%}
+
+{% for client in client%}
+    <p>Name: {{client.clientsname }}</p>
+    <p>Phone: {{client.clientsphonenumber }}</p>
+    <p>Addredd: {{client.clientsaddress }}</p>
+{% endfor%}
+
+<table class="table table-bordered table-hover">
+    {% set total = 0 %}
+    {% for list in orderlist%}
+    <div class="row">
+        <tr class="d-flex">
+            <td class="col-lg"> {{list.dishname}}</td>
+            <td class="col-lg"> {{list.price}}</td>
+            <td class="col-lg"> {{list.quantity}}</td>
+            <td class="col-lg"> {{list.cost}}</td>
+            {% set total = total + list.cost %}
+        </tr>
+    </div>
+    {% endfor %}
+    <div class="row">
+        <tr class="d-flex">
+            <td class="col-lg">TOTAL: {{total}}</td>
+        </tr>
+    </div>
+</table>
+
+{% endblock %}

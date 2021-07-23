@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    {% if user == false %}
+    {% if user == NULL %}
     <div class="row justify-content-end">
         <div class=" col-3  align-self-end bg-white">
         <a href="authentication.php">Авторизация</a>
@@ -15,6 +15,14 @@
           <a href="exit.php">Выход</a>
           &nbsp;</div>
       </div>
+      {% if cart == NULL %}
+      {% else %}
+      <div class="row justify-content-end">
+        <div class=" col-3  align-self-end bg-white">
+          <a href="cart.php">Корзина - {{cart}}</a>
+          &nbsp;</div>
+      </div>
+      {% endif %}
     {% endif %}
 
     {% block page %}

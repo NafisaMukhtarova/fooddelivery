@@ -45,11 +45,22 @@ if (isset($_SESSION['user_id'])) {
 
     $model += ['user'=>$result_user->clientsname];
     $log->debug('Вход авторизованного пользователя: ', ['user' => $result_user->login,'user_id' => $result_user->id]);
+    // если есть уже корзина - выводим количество уже добавленных блюд, если корзины нет - выводим 0
+    $cart = Capsule::select('SELECT SUM(L.quantity) as SUM
+                                    FROM fdorders O, fdorderlist L, fdorderstatus S 
+                                    WHERE O.id = L.ordernumber 
+                                        AND O.status = S.id 
+                                        AND S.statusname = ? 
+                                        AND O.client = ?',['cart',$_SESSION['user_id']]);
+    $quantity = is_null($cart[0]->SUM) ? 0 : $cart[0]->SUM;
+    //var_dump($quantity);
+    $model += ['cart'=>$quantity];
 } else {
-    $model += ['user'=>NULL];
-    $log->debug('Вход  без авторизации');
+    $model += ['user'=>NULL,'cart'=>NULL];
+    $log->debug('Вход без авторизации');
 }
 //var_dump($model);
+
 
 $template = $twig->load('index.html');
 
