@@ -5,20 +5,20 @@
 {% for order in order%}
     <p> Order № {{order.orderid}}</p>
     <p> Date {{order.orderdate}} </p>
-    <p> Total cost {{order.totalcost}} </p>
-    <form action="cart.php" method="POST">
+    <p> Total cost to pay {{order.totalcost}} </p>
+    <form action="confirmorder.php" method="POST">
         <input type='hidden' name='orderid' value = '{{order.orderid}}'>
 
-        <button type="submit" name="submit">Update Cart</button> 
+        <button type="submit" name="submit">Confirm</button> 
 
     </form> 
-    <a class="btn btn-primary" href="confirmorder.php?ordernumber={{order.orderid}}" role="button">Confirm order</a>
+    
 {% endfor%}
 
 {% for client in client%}
     <p>Name: {{client.clientsname }}</p>
     <p>Phone: {{client.clientsphonenumber }}</p>
-    <p>Addredd: {{client.clientsaddress }}</p>
+    <p>Address do deliver: {{client.clientsaddress }}</p>
 {% endfor%}
 
 <table class="table table-bordered table-hover">

@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'c721312d63564478ad66f4b5c7746b6a3d30d23e',
+    'reference' => '6cc272237d5e45b8eddc34dee764e6800d209d82',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'c721312d63564478ad66f4b5c7746b6a3d30d23e',
+      'reference' => '6cc272237d5e45b8eddc34dee764e6800d209d82',
     ),
     'doctrine/inflector' => 
     array (
@@ -136,6 +136,15 @@
       array (
       ),
       'reference' => 'f47f17d17602b2243414a44ad53d9f8b9ada5fdb',
+    ),
+    'phpmailer/phpmailer' => 
+    array (
+      'pretty_version' => 'v6.5.0',
+      'version' => '6.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a5b5c43e50b7fba655f793ad27303cd74c57363c',
     ),
     'phpoption/phpoption' => 
     array (

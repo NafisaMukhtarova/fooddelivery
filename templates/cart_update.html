@@ -6,13 +6,6 @@
     <p> Order № {{order.orderid}}</p>
     <p> Date {{order.orderdate}} </p>
     <p> Total cost {{order.totalcost}} </p>
-    <form action="cart.php" method="POST">
-        <input type='hidden' name='orderid' value = '{{order.orderid}}'>
-
-        <button type="submit" name="submit">Update Cart</button> 
-
-    </form> 
-    <a class="btn btn-primary" href="confirmorder.php?ordernumber={{order.orderid}}" role="button">Confirm order</a>
 {% endfor%}
 
 {% for client in client%}
@@ -20,7 +13,7 @@
     <p>Phone: {{client.clientsphonenumber }}</p>
     <p>Addredd: {{client.clientsaddress }}</p>
 {% endfor%}
-
+<form action="updatecart.php" method="POST">
 <table class="table table-bordered table-hover">
     {% set total = 0 %}
     {% for list in orderlist%}
@@ -28,11 +21,12 @@
         <tr class="d-flex">
             <td class="col-lg"> {{list.dishname}}</td>
             <td class="col-lg"> {{list.price}}</td>
-            <td class="col-lg"> {{list.quantity}}
+            <td class="col-lg"> 
+                <input type='text' name='quantity[{{ loop.index0 }}]' value = '{{list.quantity}}'>
             </td>
             <td class="col-lg"> {{list.cost}}</td>
-            
-            
+            <input type='hidden' name='ordernumber[{{ loop.index0 }}]' value = '{{list.ordernumber}}'>
+            <input type='hidden' name='dishid[{{ loop.index0 }}]' value = '{{list.dishid}}'>
             {% set total = total + list.cost %}
         </tr>
     </div>
@@ -44,6 +38,8 @@
     </div>
 </table>
 
+<button type="submit" name="submit">Update Cart</button> 
 
+</form>
 
 {% endblock %}
